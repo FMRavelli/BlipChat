@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projetos\\BlipChat\\BlipChat.csproj": {}
+    "c:\\Projetos\\BlipChat\\BlipChat.csproj": {}
   },
   "projects": {
-    "C:\\Projetos\\BlipChat\\BlipChat.csproj": {
+    "c:\\Projetos\\BlipChat\\BlipChat.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projetos\\BlipChat\\BlipChat.csproj",
+        "projectUniqueName": "c:\\Projetos\\BlipChat\\BlipChat.csproj",
         "projectName": "BlipChat",
-        "projectPath": "C:\\Projetos\\BlipChat\\BlipChat.csproj",
+        "projectPath": "c:\\Projetos\\BlipChat\\BlipChat.csproj",
         "packagesPath": "C:\\Users\\Avell\\.nuget\\packages\\",
-        "outputPath": "C:\\Projetos\\BlipChat\\obj\\",
+        "outputPath": "c:\\Projetos\\BlipChat\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Avell\\AppData\\Roaming\\NuGet\\NuGet.Config"
