@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BlipChat")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d2da9714e0bae1f1d5f8607b69c2fd6ef2233490")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+03873bc9e8aa36c25e086a015ca5d73d86d41027")]
 [assembly: System.Reflection.AssemblyProductAttribute("BlipChat")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BlipChat")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
