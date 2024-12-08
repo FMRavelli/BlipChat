@@ -24,61 +24,67 @@ namespace BlipChat.Repositories
             var avatarUrl = string.Empty;
             var currentPage = page;
 
-            while (accumulatedRepos.Count < 5)
+            try
             {
-                var url = $"https://api.github.com/users/{username}/repos?sort=created&direction=asc&per_page={itemsPerPage}&page={currentPage}";
-
-                // Fazer requisição
-                var response = await _httpClient.GetStringAsync(url);
-                if (string.IsNullOrEmpty(response))
+                while (accumulatedRepos.Count < 5)
                 {
-                    break;
-                }
+                    var url = $"https://api.github.com/users/{username}/repos?sort=created&direction=asc&per_page={itemsPerPage}&page={currentPage}";
+                    var response = await _httpClient.GetStringAsync(url);
 
-                var repos = JsonSerializer.Deserialize<List<Repository>>(response);
-
-                if (repos == null || repos.Count == 0)
-                {
-                    break;
-                }
-
-                // Filtrar apenas repositórios em C#
-                var filteredRepos = repos
-                    .Where(w => w.Language != null && w.Language.Equals("C#", StringComparison.OrdinalIgnoreCase))
-                    .Select(s => new GitHubRepoDto
+                    if (string.IsNullOrEmpty(response))
                     {
-                        Title = s.Name,
-                        Description = s.Description
-                    })
-                    .Take(5)
-                    .ToList();
+                        break;
+                    }
 
-                avatarUrl = repos.Select(s => s.Owner.AvatarUrl).FirstOrDefault();
+                    var repos = JsonSerializer.Deserialize<List<Repository>>(response);
 
-                accumulatedRepos.AddRange(filteredRepos);
+                    if (repos == null || repos.Count == 0)
+                    {
+                        break;
+                    }
 
-                // Verificar se já tem 5 repositorios
-                if (accumulatedRepos.Count >= 5)
-                {
-                    break;
+                    var filteredRepos = repos
+                        .Where(w => w.Language != null && w.Language.Equals("C#", StringComparison.OrdinalIgnoreCase))
+                        .Select(s => new GitHubRepoDto
+                        {
+                            Title = s.Name,
+                            Description = s.Description
+                        })
+                        .Take(5)
+                        .ToList();
+
+                    avatarUrl = repos.Select(s => s.Owner.AvatarUrl).FirstOrDefault();
+
+                    accumulatedRepos.AddRange(filteredRepos);
+
+                    if (accumulatedRepos.Count >= 5)
+                    {
+                        break;
+                    }
+
+                    currentPage++;
                 }
 
-                // Tentar novamente até atingir 5 ou terminar a lista
-                currentPage++;
+                if (accumulatedRepos.Count < 5)
+                    return null;
+
+                return new GitHubUserDto()
+                {
+                    AvatarUrl = avatarUrl,
+                    Repositories = accumulatedRepos
+                };
             }
-
-            if (accumulatedRepos.Count < 5)
-                return null;
-
-            var retorno = new GitHubUserDto() 
+            catch (HttpRequestException ex)
             {
-                AvatarUrl = avatarUrl,
-                Repositories = accumulatedRepos
-            };
-
-            return retorno;
+                // Log de erro da requisição
+                throw new Exception("Erro ao acessar o serviço GitHub.", ex);
+            }
+            catch (Exception ex)
+            {
+                // Log de erro genérico
+                throw new Exception("Erro desconhecido ao buscar repositórios.", ex);
+            }
         }
-
     }
 }
 

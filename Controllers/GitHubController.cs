@@ -18,15 +18,29 @@ namespace BlipChat.Controllers
         public async Task<IActionResult> GetGitHubUserInfo()
         {
             var username = "takenet";
-
-            var userData = await _gitHubService.GetGitHubUserInfoAsync(username);
-
-            if (userData == null)
+            
+            try
             {
-                return NotFound("Usuário não encontrado ou sem repositórios C#.");
-            }
+                var userData = await _gitHubService.GetGitHubUserInfoAsync(username);
 
-            return Ok(userData);
+                if (userData == null)
+                {
+                    return NotFound("Usuário não encontrado ou sem repositórios C#.");
+                }
+
+                return Ok(userData);
+            }
+            catch (HttpRequestException ex)
+            {
+                // Erro de rede
+                return StatusCode(500, $"Erro ao acessar o serviço de repositórios do GitHub: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                // Erro genérico
+                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
+            }
         }
+
     }
 }
