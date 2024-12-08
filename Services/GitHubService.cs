@@ -34,8 +34,6 @@ namespace BlipChat.Services
             }
             catch (Exception ex)
             {
-                // Log de erro, por exemplo, com um logger
-                // _logger.LogError($"Erro ao obter dados do usuário GitHub: {ex.Message}");
                 throw new InvalidOperationException("Falha ao buscar informações do GitHub.", ex);
             }
         }
