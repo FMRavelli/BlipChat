@@ -20,15 +20,25 @@ namespace BlipChat.Services
 
         public async Task<GitHubUserDto> GetGitHubUserInfoAsync(string username)
         {
-            // Obter os 5 repositórios mais antigos de C#
-            var retorno = await _gitHubRepository.GetGitHubRepositoriesAsync(username, itemsPerPage: 90, page: 1);
-
-            if (retorno == null || !retorno.Repositories.Any() || string.IsNullOrEmpty(retorno.AvatarUrl))
+            try
             {
-                return null;
-            }
+                // Obter os 5 repositórios mais antigos de C#
+                var retorno = await _gitHubRepository.GetGitHubRepositoriesAsync(username, itemsPerPage: 90, page: 1);
 
-            return retorno;
+                if (retorno == null || !retorno.Repositories.Any() || string.IsNullOrEmpty(retorno.AvatarUrl))
+                {
+                    return null;
+                }
+
+                return retorno;
+            }
+            catch (Exception ex)
+            {
+                // Log de erro, por exemplo, com um logger
+                // _logger.LogError($"Erro ao obter dados do usuário GitHub: {ex.Message}");
+                throw new InvalidOperationException("Falha ao buscar informações do GitHub.", ex);
+            }
         }
+
     }
 }
