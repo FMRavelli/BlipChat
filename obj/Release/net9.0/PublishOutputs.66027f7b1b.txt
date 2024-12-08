@@ -1,0 +1,9 @@
+C:\Projetos\BlipChat\bin\Release\net9.0\publish\BlipChat.exe
+C:\Projetos\BlipChat\bin\Release\net9.0\publish\appsettings.Development.json
+C:\Projetos\BlipChat\bin\Release\net9.0\publish\appsettings.json
+C:\Projetos\BlipChat\bin\Release\net9.0\publish\BlipChat.dll
+C:\Projetos\BlipChat\bin\Release\net9.0\publish\BlipChat.deps.json
+C:\Projetos\BlipChat\bin\Release\net9.0\publish\BlipChat.runtimeconfig.json
+C:\Projetos\BlipChat\bin\Release\net9.0\publish\BlipChat.pdb
+C:\Projetos\BlipChat\bin\Release\net9.0\publish\Microsoft.AspNetCore.OpenApi.dll
+C:\Projetos\BlipChat\bin\Release\net9.0\publish\Microsoft.OpenApi.dll
