@@ -20,7 +20,7 @@ namespace BlipChat.Services
 
         public async Task<GitHubUserDto> GetGitHubUserInfoAsync(string username)
         {
-            // Obter os repositórios mais antigos de C# (até 5)
+            // Obter os 5 repositórios mais antigos de C#
             var retorno = await _gitHubRepository.GetGitHubRepositoriesAsync(username, itemsPerPage: 90, page: 1);
 
             if (retorno == null || !retorno.Repositories.Any() || string.IsNullOrEmpty(retorno.AvatarUrl))

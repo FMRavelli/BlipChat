@@ -15,7 +15,6 @@ namespace BlipChat.Repositories
         public GitHubRepository(HttpClient httpClient)
         {
             _httpClient = httpClient;
-            // Defina o User-Agent para evitar o erro 403
             _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (compatible; MyApp/1.0)");
         }
 
@@ -27,22 +26,20 @@ namespace BlipChat.Repositories
 
             while (accumulatedRepos.Count < 5)
             {
-                // Construir URL com paginação
                 var url = $"https://api.github.com/users/{username}/repos?sort=created&direction=asc&per_page={itemsPerPage}&page={currentPage}";
 
                 // Fazer requisição
                 var response = await _httpClient.GetStringAsync(url);
                 if (string.IsNullOrEmpty(response))
                 {
-                    break; // Se resposta vazia, parar o loop
+                    break;
                 }
 
-                // Desserializar os repositórios
                 var repos = JsonSerializer.Deserialize<List<Repository>>(response);
 
                 if (repos == null || repos.Count == 0)
                 {
-                    break; // Parar se não houver mais repositórios
+                    break;
                 }
 
                 // Filtrar apenas repositórios em C#
@@ -60,19 +57,19 @@ namespace BlipChat.Repositories
 
                 accumulatedRepos.AddRange(filteredRepos);
 
-                // Verificar se já temos 5 repositórios
+                // Verificar se já tem 5 repositorios
                 if (accumulatedRepos.Count >= 5)
                 {
                     break;
                 }
 
-                // Avançar para a próxima página
+                // Tentar novamente até atingir 5 ou terminar a lista
                 currentPage++;
             }
 
             if (accumulatedRepos.Count < 5)
                 return null;
-                
+
             var retorno = new GitHubUserDto() 
             {
                 AvatarUrl = avatarUrl,
