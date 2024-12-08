@@ -1,1 +1,1 @@
-web: dotnet bin\Release\net6.0\BlipChat.dll
+web: dotnet BlipChat.dll
