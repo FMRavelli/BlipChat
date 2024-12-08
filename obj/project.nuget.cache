@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xpY3imZYWgM=",
+  "dgSpecHash": "hqc6qH7SYX8=",
   "success": true,
-  "projectFilePath": "C:\\Projetos\\BlipChat\\Api\\BlipChat.csproj",
+  "projectFilePath": "C:\\Projetos\\BlipChat\\BlipChat.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Avell\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.36\\microsoft.netcore.app.ref.6.0.36.nupkg.sha512",
     "C:\\Users\\Avell\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.36\\microsoft.windowsdesktop.app.ref.6.0.36.nupkg.sha512",
