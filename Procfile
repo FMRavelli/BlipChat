@@ -1,1 +1,0 @@
-web: dotnet bin/Release/net6.0/win-x64/publish/BlipChat.dll
