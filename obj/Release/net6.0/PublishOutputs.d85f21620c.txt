@@ -1,7 +1,0 @@
-C:\Projetos\BlipChat\bin\Release\net6.0\publish\BlipChat.exe
-C:\Projetos\BlipChat\bin\Release\net6.0\publish\appsettings.Development.json
-C:\Projetos\BlipChat\bin\Release\net6.0\publish\appsettings.json
-C:\Projetos\BlipChat\bin\Release\net6.0\publish\BlipChat.dll
-C:\Projetos\BlipChat\bin\Release\net6.0\publish\BlipChat.deps.json
-C:\Projetos\BlipChat\bin\Release\net6.0\publish\BlipChat.runtimeconfig.json
-C:\Projetos\BlipChat\bin\Release\net6.0\publish\BlipChat.pdb
